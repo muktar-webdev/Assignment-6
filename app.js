@@ -31,7 +31,7 @@ const showImages = (images) => {
 const getImages = (query) => {
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
-    .then(data => showImages(data.hitS))
+    .then(data => showImages(data.hits))         //--Bugs One (hitsS --Type Error)
     .catch(err => console.log(err))
 }
 
@@ -67,7 +67,7 @@ const createSlider = () => {
   document.querySelector('.main').style.display = 'block';
   // hide image aria
   imagesArea.style.display = 'none';
-  const duration = document.getElementById('duration').value || 1000;
+  const duration = document.getElementById('duration') || 1000;  //--Bug Two (.value --type Erroe) --//
   sliders.forEach(slide => {
     let item = document.createElement('div')
     item.className = "slider-item";
