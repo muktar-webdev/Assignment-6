@@ -1,5 +1,8 @@
+body{
+  background:rgb(147, 192, 192);
+}
 #sliders {
-  height: 400px;
+  height: 380px;
   width: 60%;
   overflow: hidden;
   margin: 0 auto;
@@ -15,8 +18,21 @@
 }
 
 .img-thumbnail {
+  margin-top: 10%;
   cursor: pointer;
+  border-radius: 20px;
+  background-color: #d7f0f0;
+  transition: transform 1s;
+  width: 260px;
+  height: 200px;
+  margin: 0 auto;
 }
+.img-thumbnail:hover{
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.2); 
+}
+
 
 .added {
   border: 2px solid #1e1743;
@@ -24,28 +40,31 @@
 }
 
 img {
-  height: 400px;
+  height: 300px;
   object-fit: cover;
+  border-radius: 20px;
+  
 }
 
 .prev-next {
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   cursor: pointer;
+  
 }
 
 .prev, .next {
   background-color: transparent;
   padding: 8px 10px;
-  color: #fff;
+  color: rgb(197, 29, 29);
 }
 
 .dot {
-  background-color: rgb(163, 156, 156);
-  height: 10px;
-  width: 10px;
+  background-color: rgb(66, 8, 8);
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   cursor: pointer;
   margin: 0 3px;
