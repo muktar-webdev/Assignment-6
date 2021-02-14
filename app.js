@@ -12,7 +12,7 @@ let sliders = [];
 // to create your own api key
 const KEY = "15674931-a9d714b6e9d654524df198e00&q";
 
-// show images
+//-- show images --//
 const showImages = (images) => {
   imagesArea.style.display = "block";
   gallery.innerHTML = "";
@@ -27,6 +27,8 @@ const showImages = (images) => {
   });
 };
 
+
+// --get Images --//
 const getImages = (query) => {
   fetch(
     `https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`
@@ -36,6 +38,8 @@ const getImages = (query) => {
     .catch((err) => console.log(err));
 };
 
+
+// --Image Select and Un-Select --//
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
@@ -50,7 +54,7 @@ const selectItem = (event, img) => {
 };
 
 
-// --Slider --//
+// --Create Slider --//
 var timer;
 const createSlider = () => {                                           // // --Problem -2 --(Create Slider)---// //
   // check slider image length
@@ -70,7 +74,8 @@ const createSlider = () => {                                           // // --P
 
   sliderContainer.appendChild(prevNext);
   document.querySelector(".main").style.display = "block";
-  // hide image aria
+
+  //-- hide image aria --//
   imagesArea.style.display = "none";
   const duration = document.getElementById("duration").value || 1000;     
   sliders.forEach((slide) => {
@@ -83,7 +88,7 @@ const createSlider = () => {                                           // // --P
   });
   changeSlide(0);
 
-  // --Timer --//
+  // --Slider Duration --//
   if(duration >= 1000 ){                                                // // --Problem -3 -- (negative time) --// //
    timer = setInterval(function () {
     slideIndex++;
@@ -106,12 +111,12 @@ const createSlider = () => {                                           // // --P
   }
 };
 
-// change slider index
+// --change slider index--//
 const changeItem = (index) => {
   changeSlide((slideIndex += index));
 };
 
-// change slide item
+// --change slide item --//
 const changeSlide = (index) => {
   const items = document.querySelectorAll(".slider-item");
   if (index < 0) {
@@ -144,8 +149,8 @@ sliderBtn.addEventListener("click", function () {
   createSlider();
 });
 
-//3. --SearchBox click on keyboard Enter  Feature --//  
 
+// --SearchBox click on keyboard Enter  Feature --//  
 var input = document.getElementById("search");                   // // --- Problem -4 --(Keyboard Enter Features) ---//
 input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
