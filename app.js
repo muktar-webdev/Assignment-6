@@ -24,12 +24,17 @@ const showImages = (images) => {
     div.innerHTML = `
      <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div);
+    
   });
+    loadingSpinner(false);   // -- Remove Spinner When Images is already Shown -- //
+
 };
 
 
 // --get Images --//
 const getImages = (query) => {
+  loadingSpinner(true);  //--Call Spinner when image is loading --/
+
   fetch(
     `https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`
   )
@@ -37,6 +42,7 @@ const getImages = (query) => {
     .then((data) => showImages(data.hits))                               // //--Problem -1--( --Type Error) --// //
     .catch((err) => console.log(err));
 };
+
 
 
 // --Image Select and Un-Select --//                                  // // --Problem -5 --(Select and Un-Select Image) -- // //
@@ -158,7 +164,17 @@ input.addEventListener("keyup", function (event) {
 });
 
 
-
+// --Toggler Loading --//
+const loadingSpinner = (show) =>{
+  const spinner = document.getElementById('loading-spinner');
+  if(show){
+  spinner.classList.remove('d-none');
+  }
+  else{
+  spinner.classList.add('d-none');
+    
+  }
+}
 
 
 
