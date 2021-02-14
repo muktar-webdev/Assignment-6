@@ -39,17 +39,15 @@ const getImages = (query) => {
 };
 
 
-// --Image Select and Un-Select --//
+// --Image Select and Un-Select --//                                  // // --Problem -5 --(Select and Un-Select Image) -- // //
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-  element.classList.add("added");
+  element.classList.toggle("added");    //--Just Use toggle('added')  instant of add('added') --//
 
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
-  } else {
-    alert("Hey, Already added !");
   }
 };
 
@@ -158,6 +156,9 @@ input.addEventListener("keyup", function (event) {
     document.getElementById("search-btn").click();
   }
 });
+
+
+
 
 
 
