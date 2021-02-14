@@ -32,7 +32,7 @@ const getImages = (query) => {
     `https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`
   )
     .then((response) => response.json())
-    .then((data) => showImages(data.hits))       //1--Bugs One (hitsS --Type Error)
+    .then((data) => showImages(data.hits))                               // //--Problem -1--( --Type Error) --// //
     .catch((err) => console.log(err));
 };
 
@@ -48,8 +48,11 @@ const selectItem = (event, img) => {
     alert("Hey, Already added !");
   }
 };
+
+
+// --Slider --//
 var timer;
-const createSlider = () => {
+const createSlider = () => {                                           // // --Problem -2 --(Create Slider)---// //
   // check slider image length
   if (sliders.length < 2) {
     alert("Select at least 2 image.");
@@ -69,7 +72,7 @@ const createSlider = () => {
   document.querySelector(".main").style.display = "block";
   // hide image aria
   imagesArea.style.display = "none";
-  const duration = document.getElementById("duration").value || 1000;     //2.--Bug Two (.value --type Erroe) --//
+  const duration = document.getElementById("duration").value || 1000;     
   sliders.forEach((slide) => {
     let item = document.createElement("div");
     item.className = "slider-item";
@@ -79,10 +82,28 @@ const createSlider = () => {
     sliderContainer.appendChild(item);
   });
   changeSlide(0);
-  timer = setInterval(function () {
+
+  // --Timer --//
+  if(duration >= 1000 ){                                                // // --Problem -3 -- (negative time) --// //
+   timer = setInterval(function () {
     slideIndex++;
     changeSlide(slideIndex);
-  }, duration);
+  }, duration);      
+  }
+  else if(duration < 0 ){
+    alert("Duration Time Cann't be Negative!!But You can Create Slider With Default Slider Duration");
+    timer = setInterval(function () {
+      slideIndex++;
+      changeSlide(slideIndex);
+    }, 1000);  
+  }
+  else if( duration >= 500 || duration < 500 || duration < 600 || duration < 700 || duration < 800 || duration < 900 ){
+    confirm("Are You want to speed up slider change??");
+    timer = setInterval(function () {
+      slideIndex++;
+      changeSlide(slideIndex);
+    }, duration); 
+  }
 };
 
 // change slider index
@@ -125,7 +146,7 @@ sliderBtn.addEventListener("click", function () {
 
 //3. --SearchBox click on keyboard Enter  Feature --//  
 
-var input = document.getElementById("search");
+var input = document.getElementById("search");                   // // --- Problem -4 --(Keyboard Enter Features) ---//
 input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
