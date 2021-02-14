@@ -22,12 +22,13 @@ body{
 .img-thumbnail {
   margin-top: 10%;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #d7f0f0;
   transition: transform 1s;
-  width: 260px;
+  width: 300px;
   height: 200px;
   margin: 0 auto;
+  padding: 20px;
 }
 .img-thumbnail:hover{
   -ms-transform: scale(1.5); /* IE 9 */
@@ -46,6 +47,9 @@ img {
   object-fit: cover;
   border-radius: 20px;
   
+}
+.img-item{
+  padding: 20px;
 }
 
 .prev-next {
